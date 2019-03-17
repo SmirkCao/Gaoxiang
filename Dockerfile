@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 RUN apt-get -y update && \
     apt-get -y install \
 	apt-utils \
+	software-properties-common \
         python3 \
 	python3-dev \
 	git \
@@ -21,6 +22,9 @@ RUN apt-get -y update && \
         libtiff-dev \
         libv4l-dev \ 
 	vim &&\
+    add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl && \
+    apt-get update && \
+    apt-get install -y libpcl-dev && \
 
     wget https://github.com/opencv/opencv/archive/3.4.2.zip -O opencv3.zip && \
     unzip -q opencv3.zip && \
